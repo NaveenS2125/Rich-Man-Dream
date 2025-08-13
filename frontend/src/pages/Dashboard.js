@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Users, Phone, Calendar, TrendingUp, DollarSign, Eye, Target, Award } from 'lucide-react';
 import StatsCard from '../components/Dashboard/StatsCard';
 import { SalesChart, LeadsChart, StatusDistributionChart, ViewingsChart, MiniLineChart } from '../components/Charts/ChartComponents';
@@ -8,15 +8,65 @@ import { Badge } from '../components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { mockDashboardStats, mockChartData, mockLeads, mockUsers } from '../data/mockData';
 import { formatCurrency, formatDate } from '../lib/utils';
+import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../hooks/use-toast';
+import axios from 'axios';
 
 const Dashboard = () => {
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const [dashboardStats, setDashboardStats] = useState(mockDashboardStats);
+  const [chartData, setChartData] = useState(mockChartData);
+  const [recentLeads, setRecentLeads] = useState([]);
+  const [topAgents, setTopAgents] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   // Mini chart data for stats cards
   const miniChartData = [
     { value: 45 }, { value: 52 }, { value: 38 }, { value: 61 }, { value: 58 }, { value: 67 }, { value: 72 }
   ];
 
-  const recentLeads = mockLeads.slice(0, 3);
-  const topAgents = mockUsers.slice(0, 3);
+  useEffect(() => {
+    // For now, use mock data since we haven't implemented the dashboard endpoints yet
+    // TODO: Replace with real API calls once dashboard endpoints are implemented
+    setRecentLeads(mockLeads.slice(0, 3));
+    setTopAgents(mockUsers.slice(0, 3));
+
+    // Show a toast that we're using demo data for now
+    toast({
+      title: "Demo Mode",
+      description: "Currently showing demo data. Backend integration coming soon!",
+    });
+  }, [toast]);
+
+  const fetchDashboardData = async () => {
+    try {
+      setLoading(true);
+      
+      // TODO: Implement these API calls once backend endpoints are ready
+      // const [statsRes, chartsRes, leadsRes, agentsRes] = await Promise.all([
+      //   axios.get('/dashboard/stats'),
+      //   axios.get('/dashboard/charts'),
+      //   axios.get('/leads?limit=3&sort=created_at'),
+      //   axios.get('/users?role=agent&sort=closed_deals&limit=3')
+      // ]);
+
+      // setDashboardStats(statsRes.data);
+      // setChartData(chartsRes.data);
+      // setRecentLeads(leadsRes.data.leads);
+      // setTopAgents(agentsRes.data);
+
+    } catch (error) {
+      console.error('Failed to fetch dashboard data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to load dashboard data. Using demo data.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="p-6 space-y-6 bg-gray-50 dark:bg-gray-900/50 min-h-screen">
@@ -24,7 +74,7 @@ const Dashboard = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Welcome Back, Sarah! 👋
+            Welcome Back, {user?.name || 'User'}! 👋
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
             Here's what's happening with your real estate empire today.
@@ -39,7 +89,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard
           title="Total Leads"
-          value={mockDashboardStats.totalLeads}
+          value={dashboardStats.totalLeads}
           change="+12.5%"
           icon={Users}
           color="yellow"
@@ -47,7 +97,7 @@ const Dashboard = () => {
         />
         <StatsCard
           title="Hot Leads"
-          value={mockDashboardStats.hotLeads}
+          value={dashboardStats.hotLeads}
           change="+8.2%"
           icon={Target}
           color="green"
@@ -55,7 +105,7 @@ const Dashboard = () => {
         />
         <StatsCard
           title="Scheduled Viewings"
-          value={mockDashboardStats.scheduledViewings}
+          value={dashboardStats.scheduledViewings}
           change="+15.3%"
           icon={Calendar}
           color="blue"
@@ -82,7 +132,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <SalesChart data={mockChartData.salesChart} />
+            <SalesChart data={chartData.salesChart} />
           </CardContent>
         </Card>
 
@@ -95,7 +145,7 @@ const Dashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <StatusDistributionChart data={mockChartData.statusDistribution} />
+            <StatusDistributionChart data={chartData.statusDistribution} />
           </CardContent>
         </Card>
       </div>
