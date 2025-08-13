@@ -89,8 +89,13 @@ async def health_check():
     }
 
 
-# Include authentication routes
+# Include all routes
 api_router.include_router(auth_router)
+api_router.include_router(leads_router)
+api_router.include_router(calls_router)
+api_router.include_router(viewings_router)
+api_router.include_router(sales_router)
+api_router.include_router(dashboard_router)
 
 # Include the API router in the main app
 app.include_router(api_router)
