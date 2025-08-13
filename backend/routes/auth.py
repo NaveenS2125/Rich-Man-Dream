@@ -1,10 +1,10 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from fastapi.security import HTTPBearer
 from pydantic import BaseModel, EmailStr
-from ..database.connection import users_collection
-from ..auth.jwt_handler import verify_password, create_access_token
-from ..auth.middleware import get_current_user_email, get_current_user_data
-from ..models.user import UserResponse
+from database.connection import users_collection
+from auth.jwt_handler import verify_password, create_access_token
+from auth.middleware import get_current_user_email, get_current_user_data
+from models.user import UserResponse
 from bson import ObjectId
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
