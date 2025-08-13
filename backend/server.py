@@ -12,6 +12,11 @@ sys.path.append(str(Path(__file__).parent))
 
 # Import routes
 from routes.auth import router as auth_router
+from routes.leads import router as leads_router
+from routes.calls import router as calls_router
+from routes.viewings import router as viewings_router
+from routes.sales import router as sales_router
+from routes.dashboard import router as dashboard_router
 
 # Import database and utilities
 from database.connection import ping_database, create_indexes, close_database_connection
