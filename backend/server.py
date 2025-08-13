@@ -5,13 +5,17 @@ import os
 import logging
 from pathlib import Path
 from contextlib import asynccontextmanager
+import sys
+
+# Add the backend directory to Python path
+sys.path.append(str(Path(__file__).parent))
 
 # Import routes
-from .routes.auth import router as auth_router
+from routes.auth import router as auth_router
 
 # Import database and utilities
-from .database.connection import ping_database, create_indexes, close_database_connection
-from .utils.seed_data import seed_database
+from database.connection import ping_database, create_indexes, close_database_connection
+from utils.seed_data import seed_database
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
