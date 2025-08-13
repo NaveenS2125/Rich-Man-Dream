@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from bson import ObjectId
-from ..auth.jwt_handler import hash_password
-from ..database.connection import (
+from auth.jwt_handler import hash_password
+from database.connection import (
     users_collection, 
     leads_collection, 
     calls_collection, 
