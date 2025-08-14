@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { Toaster } from "./components/ui/toaster";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Leads from "./pages/Leads";
 import Sidebar from "./components/Layout/Sidebar";
 import Header from "./components/Layout/Header";
 
