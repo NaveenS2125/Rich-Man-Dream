@@ -6,7 +6,9 @@ from database.connection import (
     leads_collection, 
     calls_collection, 
     viewings_collection, 
-    sales_collection
+    sales_collection,
+    emails_collection,
+    email_templates_collection
 )
 
 
