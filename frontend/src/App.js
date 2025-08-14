@@ -57,7 +57,7 @@ const AppRoutes = () => {
               <Route path="/calls" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Call Log</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
               <Route path="/viewings" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Viewing Scheduler</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
               <Route path="/sales" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Sales Tracker</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
-              <Route path="/emails" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Email Sync</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
+              <Route path="/emails" element={<Emails />} />
               <Route path="/reports" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Reports</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
               <Route path="/settings" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Settings</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
             </Routes>
