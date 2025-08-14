@@ -252,7 +252,7 @@ async def get_email_templates(
     return {"templates": templates}
 
 
-@router.post("/templates")
+@router.post("/templates/")
 async def create_email_template(
     template_data: EmailTemplateCreate,
     user_data: dict = Depends(get_current_user_data)
