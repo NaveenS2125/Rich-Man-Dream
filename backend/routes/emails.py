@@ -392,7 +392,7 @@ async def send_email_task(email_id: str):
 
 
 # Notification Triggers
-@router.post("/triggers/new-lead")
+@router.post("/triggers/new-lead/")
 async def trigger_new_lead_email(
     lead_id: str,
     background_tasks: BackgroundTasks,
@@ -409,7 +409,7 @@ async def trigger_new_lead_email(
     return {"success": False, "message": "No welcome template found"}
 
 
-@router.post("/triggers/viewing-reminder")
+@router.post("/triggers/viewing-reminder/")
 async def trigger_viewing_reminder_email(
     viewing_id: str,
     background_tasks: BackgroundTasks,
