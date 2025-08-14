@@ -234,7 +234,7 @@ async def delete_email(
 
 
 # Email Templates Endpoints
-@router.get("/templates")
+@router.get("/templates/")
 async def get_email_templates(
     user_data: dict = Depends(get_current_user_data)
 ):
