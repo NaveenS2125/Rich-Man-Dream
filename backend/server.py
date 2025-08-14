@@ -17,6 +17,7 @@ from routes.calls import router as calls_router
 from routes.viewings import router as viewings_router
 from routes.sales import router as sales_router
 from routes.dashboard import router as dashboard_router
+from routes.emails import router as emails_router
 
 # Import database and utilities
 from database.connection import ping_database, create_indexes, close_database_connection
