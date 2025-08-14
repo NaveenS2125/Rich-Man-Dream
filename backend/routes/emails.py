@@ -240,8 +240,8 @@ async def get_email_templates(
 ):
     """Get all email templates."""
     
-    # Get active templates
-    cursor = email_templates_collection.find({"is_active": True}).sort("created_at", -1)
+    # Get all templates (remove is_active filter for debugging)
+    cursor = email_templates_collection.find({}).sort("created_at", -1)
     templates = await cursor.to_list(length=100)
     
     # Convert ObjectIds to strings
