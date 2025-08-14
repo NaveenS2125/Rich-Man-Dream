@@ -62,6 +62,17 @@ async def create_indexes():
     await sales_collection.create_index("stage")
     await sales_collection.create_index("expected_close")
     
+    # Email indexes
+    await emails_collection.create_index("lead_id")
+    await emails_collection.create_index("agent_id")
+    await emails_collection.create_index("status")
+    await emails_collection.create_index("created_at")
+    await emails_collection.create_index("direction")
+    
+    # Email template indexes
+    await email_templates_collection.create_index("template_type")
+    await email_templates_collection.create_index("is_active")
+    
     logger.info("Database indexes created successfully")
 
 
