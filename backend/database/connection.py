@@ -30,6 +30,8 @@ leads_collection = database.leads
 calls_collection = database.calls
 viewings_collection = database.viewings
 sales_collection = database.sales
+emails_collection = database.emails
+email_templates_collection = database.email_templates
 
 
 async def create_indexes():
