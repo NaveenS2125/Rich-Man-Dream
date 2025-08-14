@@ -52,7 +52,7 @@ const AppRoutes = () => {
           <Layout>
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/leads" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Leads Management</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
+              <Route path="/leads" element={<Leads />} />
               <Route path="/calls" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Call Log</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
               <Route path="/viewings" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Viewing Scheduler</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
               <Route path="/sales" element={<div className="p-6"><h1 className="text-2xl font-bold text-gray-900 dark:text-white">Sales Tracker</h1><p className="text-gray-600 dark:text-gray-400 mt-2">Coming soon...</p></div>} />
