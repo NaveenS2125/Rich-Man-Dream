@@ -281,7 +281,7 @@ async def create_email_template(
     return {"template": created_template}
 
 
-@router.post("/send-template")
+@router.post("/send-template/")
 async def send_template_email(
     template_id: str,
     lead_id: str,
